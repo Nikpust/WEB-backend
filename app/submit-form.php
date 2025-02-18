@@ -15,9 +15,6 @@
         if (($file = fopen($data_file_cvs, 'a')) !== false) {
             fputcsv($file, $data);
             fclose($file);
-            $_SESSION['message'] = "Книга успешно добавлена!";
-        } else {
-            $_SESSION['message'] = "Ошибка при добавлении книги!";
         }
 
         header('Location: index.php');

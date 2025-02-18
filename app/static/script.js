@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const dropdownMenu = document.getElementById('dropdownMenu');
 
     dropdownButton.addEventListener('click', function(event) {
-        event.preventDefault();
+        eventоиог.preventDefault();
         dropdownMenu.classList.toggle('open');
     });
 });
