@@ -1,0 +1,6 @@
+{
+    "name": "root/html",
+    "require": {
+        "phpoffice/phpspreadsheet": "^4.0"
+    }
+}
