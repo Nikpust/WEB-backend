@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
 
     document.getElementById("book").addEventListener("input", function () {
-        this.value = this.value.replace(/[^a-zA-ZА-Яа-яёЁ0-9\s.,№-"]/g, '');
+        this.value = this.value.replace(/[^a-zA-ZА-Яа-яёЁ0-9\s.,№"'-]/g, '');
     });
 
     document.getElementById("author").addEventListener("input", function () {
