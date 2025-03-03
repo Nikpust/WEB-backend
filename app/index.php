@@ -45,6 +45,9 @@
                         <label><input type="checkbox" name="genre[]" value="Комедия"> Комедия</label>
                         <label><input type="checkbox" name="genre[]" value="Поэзия"> Поэзия</label>
                         <label><input type="checkbox" name="genre[]" value="Трагедия"> Трагедия</label>
+                        <label><input type="checkbox" name="genre[]" value="Детектив"> Детектив</label>
+                        <label><input type="checkbox" name="genre[]" value="Сатира"> Сатира</label>
+                        <label><input type="checkbox" name="genre[]" value="Ужасы"> Ужасы</label>
                     </div>
                 </div>
             </div>
@@ -52,11 +55,11 @@
             <div class="form-row">
                 <div class="form-input-group">
                     <label for="isbn">ISBN:</label>
-                    <input type="text" id="isbn" name="isbn" class="form-input">
+                    <input type="text" id="isbn" name="isbn" class="form-input" minlength="13" required>
                 </div>
                 <div class="form-input-group">
                     <label for="pages">Количество страниц:</label>
-                    <input type="number" id="pages" name="pages" min="1" class="form-input">
+                    <input type="number" id="pages" name="pages" min="1" class="form-input" required>
                 </div>
             </div>
 
@@ -80,7 +83,7 @@
                 </div>
                 <div class="form-input-group">
                     <label for="release_date">Дата поступления в продажу:</label>
-                    <input type="date" id="release_date" name="release_date" class="form-input">
+                    <input type="date" id="release_date" name="release_date" class="form-input" required>
                 </div>
 
             </div>
@@ -88,11 +91,11 @@
             <div class="form-row">
                 <div class="form-input-group">
                         <label for="weight">Вес книги (грамм):</label>
-                        <input type="number" id="weight" name="weight" min="1" class="form-input">
+                        <input type="number" id="weight" name="weight" min="1" class="form-input" required>
                 </div>
                 <div class="form-input-group">
                     <label for="price">Стоимость:</label>
-                    <input type="text" id="price" name="price" class="form-input" required>
+                    <input type="text" id="price" name="price" min="1" class="form-input" required>
                 </div>
             </div>
 
