@@ -9,9 +9,10 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     background-color: #F9F7F3;
     font-size: 16px;
+    overflow: auto;
 }
 
 .form-container {
@@ -74,6 +75,11 @@ form {
     border-color: #FF9F00;
     box-shadow: 0 0 5px rgba(255, 159, 0, 0.4);
     outline: none;
+}
+
+.form-input.error:focus {
+    border-color: #FF6F61 !important;
+    box-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
 }
 
 textarea.form-input {
