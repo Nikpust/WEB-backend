@@ -36,8 +36,8 @@
 
             <div class="form-input-group">
                 <div class="dropdown">
-                    <button class="dropdown-button" id="dropdownButton">Выберите жанры</button>
-                    <div class="dropdown-menu" id="dropdownMenu">
+                    <button class="dropdown-button" id="drop-button-genre">Выберите жанры</button>
+                    <div class="dropdown-menu" id="dropdown-menu-genre">
                         <label><input type="checkbox" name="genre[]" value="Фантастика"> Фантастика</label>
                         <label><input type="checkbox" name="genre[]" value="Роман"> Роман</label>
                         <label><input type="checkbox" name="genre[]" value="Драма"> Драма</label>
@@ -67,10 +67,10 @@
                 <div class="form-input-group">
                     <label for="age">Возрастное ограничение:</label>
                     <div class="dropdown">
-                        <button class="dropdown-button" id="dropdownButton2">
+                        <button class="dropdown-button" id="drop-button-age">
                             <span id="selected-option"></span>
                         </button>
-                        <div class="dropdown-menu" id="dropdownMenu2">
+                        <div class="dropdown-menu" id="dropdown-menu-age">
                             <label onclick="Select_Option('0+')"><input type="radio" value="0+"> 0+</label>
                             <label onclick="Select_Option('6+')"><input type="radio" value="6+"> 6+</label>
                             <label onclick="Select_Option('12+')"><input type="radio" value="12+"> 12+</label>
@@ -85,17 +85,16 @@
                     <label for="release_date">Дата поступления в продажу:</label>
                     <input type="date" id="release_date" name="release_date" class="form-input" required>
                 </div>
-
             </div>
 
             <div class="form-row">
                 <div class="form-input-group">
                         <label for="weight">Вес книги (грамм):</label>
-                        <input type="number" id="weight" name="weight" min="1" class="form-input" required>
+                        <input type="number" id="weight" name="weight" min="0.01" step="0.01" class="form-input" required>
                 </div>
                 <div class="form-input-group">
                     <label for="price">Стоимость:</label>
-                    <input type="text" id="price" name="price" min="1" class="form-input" required>
+                    <input type="number" id="price" name="price" min="0.01" step="0.01" class="form-input" required>
                 </div>
             </div>
 
@@ -105,10 +104,11 @@
             </div>
 
             <div class="form-buttons">
+                <button type="reset" class="btn-reset">Очистить</button>
                 <button type="submit" class="btn-submit">Сохранить</button>
-                <button type="reset" class="btn-reset">Отмена</button>
             </div>
         </form>
     </div>
+    <a href="/view-book.php" class="link-go">Перейти к книгам 🕮</a>
 </body>
 </html>
