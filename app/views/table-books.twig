@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Список книг</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container-table">
+        <div class="nav-table">
+            <h1>Список книг</h1>
+            <div class="nav-table-btn">
+                <a href="/" class="link-go">Назад ↶</a>
+                <button class="button-download" onclick="window.location.href='/download-table.php'">Скачать таблицу</button>
+            </div>
+        </div>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Название            </th>
+                        <th>Автор               </th>
+                        <th>Жанры               </th>
+                        <th>Год                 </th>
+                        <th>Издательство        </th>
+                        <th>ISBN                </th>
+                        <th>Страницы            </th>
+                        <th>Возраст             </th>
+                        <th>Дата поступления    </th>
+                        <th>Вес                 </th>
+                        <th>Цена                </th>
+                        <th>Описание            </th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for book in books %}
+                    <tr>
+                        <td>{{ book.book_name }}            </td>
+                        <td>{{ book.book_author }}          </td>
+                        <td>{{ book.genres }}               </td>
+                        <td>{{ book.book_year }}            </td>
+                        <td>{{ book.book_publisher }}       </td>
+                        <td>{{ book.book_isbn }}            </td>
+                        <td>{{ book.book_pages }}           </td>
+                        <td>{{ book.book_age }}             </td>
+                        <td>{{ book.book_release_date }}    </td>
+                        <td>{{ book.book_weight }} г        </td>
+                        <td>{{ book.book_price }} ₽         </td>
+                        <td>{{ book.book_summary | nl2br }} </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
