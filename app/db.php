@@ -7,7 +7,11 @@
 
     $dsn = "pgsql:host=$host;port=$port;dbname=$dbname";
 
-    $log_file = __DIR__ . "/logs/db.log";
+    $log_dir = __DIR__ . "/logs";
+    $log_file = $log_dir . "/db.log";
+    if (!is_dir($log_dir)) {
+        mkdir($log_dir, 0777, true);
+    }
     if (!file_exists($log_file)) {
         file_put_contents($log_file, "");
     }
