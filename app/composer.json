@@ -1,0 +1,19 @@
+{
+    "name": "bookstore/project",
+    "description": "Веб-приложенение книжного магазина на PHP",
+    "type": "project",
+    "require": {
+        "phpoffice/phpspreadsheet": "^1.29",
+        "twig/twig": "^3.20"
+    },
+    "autoload": {
+        "psr-4": {
+            "Bookstore\\Project\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Nikita Klimenko"
+        }
+    ]
+}
