@@ -18,16 +18,19 @@ services:
       - ./app/data:/var/www/html/data
     depends_on:
       - db
+    env_file:
+      - .env
     
   db: 
     image: postgres:15
     restart: always
     environment:
-      - POSTGRES_USER=admin
-      - POSTGRES_PASSWORD=root
-      - POSTGRES_DB=mydb
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
     volumes:
-      - db_data:/var/lib/postgresql/data
+      - db_data_bookstore:/var/lib/postgresql/data
+      - ./db/init:/docker-entrypoint-initdb.d
   
   adminer:
     image: adminer 
@@ -40,4 +43,4 @@ services:
       - db
 
 volumes:
-  db_data:
+  db_data_bookstore:

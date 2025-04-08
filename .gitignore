@@ -1,1 +1,2 @@
-app/data/data_file.xlsx
+app/logs/db.log
+.env
