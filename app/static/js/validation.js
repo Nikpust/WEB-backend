@@ -32,12 +32,4 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("pages").addEventListener("input", function () {
         this.value = clean_input(this.value, /\D/g);
     });
-
-    document.getElementById("weight").addEventListener("input", function () {
-        this.value = clean_input(this.value, /\D/g);
-    });
-
-    document.getElementById("price").addEventListener("input", function () {
-        this.value = clean_input(this.value, /\D/g);
-    });
 });
