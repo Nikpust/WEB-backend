@@ -4,18 +4,22 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - ./app:/var/www/html
+      - ./public:/var/www/html/public
       - ./nginx/conf.d:/etc/nginx/conf.d
     depends_on:
       - php
   
   php:
     build:
-      context: ./app
+      context: .
       dockerfile: Dockerfile
-    volumes: 
-      - ./app:/var/www/html
-      - ./app/data:/var/www/html/data
+    volumes:
+      - ./src:/var/www/html/src
+      - ./public:/var/www/html/public
+      - ./vendor:/var/www/html/vendor
+      - ./composer.json:/var/www/html/composer.json
+      - ./composer.lock:/var/www/html/composer.lock
+    working_dir: /var/www/html
     depends_on:
       - db
     env_file:
