@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Список книг</title>
+
+    <link rel="stylesheet" href="/assets/css/root/variables.css">
+    <link rel="stylesheet" href="/assets/css/root/common.css">
+
+    <link rel="stylesheet" href="/assets/css/components/buttons.css">
+    <link rel="stylesheet" href="/assets/css/components/dropdown.css">
+    <link rel="stylesheet" href="/assets/css/components/table.css">
+    <link rel="stylesheet" href="/assets/css/components/modal.css">
+    <link rel="stylesheet" href="/assets/css/components/book-form.css">
+    <link rel="stylesheet" href="/assets/css/components/notification.css">
+    <link rel="stylesheet" href="/assets/css/components/scrollbar.css">
+    
+    <link rel="stylesheet" href="/assets/css/pages/books.css">
+</head>
+<body>
+    <div class="container-table">
+        <div class="nav-table">
+            <h1>Список книг</h1>
+            <div class="nav-table-btn">
+                <a href="/" class="btn btn-secondary">Назад ↶</a>
+                <button class="btn btn-primary" onclick="openModal()">Добавить книгу</button>
+                <div class="dropdown">
+                    <button class="btn btn-primary" id="drop-button-download">Скачать отчет ▾</button>
+                    <div class="dropdown-menu" id="dropdown-menu-download">
+                        <a href="#" class="dropdown-link">PDF</a>
+                        <a href="#" class="dropdown-link">Excel</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Название            </th>
+                        <th>Автор               </th>
+                        <th>Жанры               </th>
+                        <th>Год                 </th>
+                        <th>Издательство        </th>
+                        <th>ISBN                </th>
+                        <th>Страницы            </th>
+                        <th>Возраст             </th>
+                        <th>Дата поступления    </th>
+                        <th>Вес                 </th>
+                        <th>Цена                </th>
+                        <th>Описание            </th>
+                        <th>Редактирование      </th>
+                        <th>Удаление            </th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for book in books %}
+                    <tr>
+                        <td>{{ book.book_name }}            </td>
+                        <td>{{ book.book_author }}          </td>
+                        <td>{{ book.genres }}               </td>
+                        <td>{{ book.book_year }}            </td>
+                        <td>{{ book.book_publisher }}       </td>
+                        <td>{{ book.book_isbn }}            </td>
+                        <td>{{ book.book_pages }}           </td>
+                        <td>{{ book.book_age }}             </td>
+                        <td>{{ book.book_release_date }}    </td>
+                        <td>{{ book.book_weight }} г        </td>
+                        <td>{{ book.book_price }} ₽         </td>
+                        <td>{{ book.book_summary | nl2br }} </td>
+                        <td>
+                            <button class="btn-edit" data-id="{{ book.book_id }}">✏️</button>
+                        </td>
+                        <td>
+                            <button class="btn-delete" data-id="{{ book.book_id }}">❌</button>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="modal-form">
+            <div class="modal-header">
+                <h2 id="modal-title">Добавить книгу</h2>
+                <button type="button" class="modal-close" onclick="closeModal()">✖</button>
+            </div>
+            <form id="add-book-form" action="/book/save" method="POST">
+                <div class="form-row">
+                    <div class="form-input-group">
+                        <label for="book">Название книги:</label>
+                        <input type="text" id="book" name="book" class="form-input" required>
+                    </div>
+                    <div class="form-input-group">
+                        <label for="author">Автор:</label>
+                        <input type="text" id="author" name="author" class="form-input" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-input-group">
+                        <label for="year">Год издания:</label>
+                        <input type="number" id="year" name="year" min="1900" max="2025" class="form-input" required>
+                    </div>
+                    <div class="form-input-group">
+                        <label for="publisher">Издательство:</label>
+                        <input type="text" id="publisher" name="publisher" class="form-input" required>
+                    </div>
+                </div>
+    
+                <div class="form-input-group">
+                    <div class="dropdown">
+                        <button class="dropdown-inputs" id="drop-button-genre">Выберите жанры</button>
+                        <div class="dropdown-menu" id="dropdown-menu-genre">
+                            <label><input type="checkbox" name="genre[]" value="Фантастика"> Фантастика</label>
+                            <label><input type="checkbox" name="genre[]" value="Роман"> Роман</label>
+                            <label><input type="checkbox" name="genre[]" value="Драма"> Драма</label>
+                            <label><input type="checkbox" name="genre[]" value="Новелла"> Новелла</label>
+                            <label><input type="checkbox" name="genre[]" value="Комедия"> Комедия</label>
+                            <label><input type="checkbox" name="genre[]" value="Поэзия"> Поэзия</label>
+                            <label><input type="checkbox" name="genre[]" value="Трагедия"> Трагедия</label>
+                            <label><input type="checkbox" name="genre[]" value="Детектив"> Детектив</label>
+                            <label><input type="checkbox" name="genre[]" value="Сатира"> Сатира</label>
+                            <label><input type="checkbox" name="genre[]" value="Ужасы"> Ужасы</label>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="form-row">
+                    <div class="form-input-group">
+                        <label for="isbn">ISBN:</label>
+                        <input type="text" id="isbn" name="isbn" class="form-input" minlength="13" required>
+                    </div>
+                    <div class="form-input-group">
+                        <label for="pages">Количество страниц:</label>
+                        <input type="number" id="pages" name="pages" min="1" class="form-input" required>
+                    </div>
+                </div>
+    
+                <div class="form-row">
+                    <div class="form-input-group">
+                        <label for="age">Возрастное ограничение:</label>
+                        <div class="dropdown">
+                            <button class="dropdown-inputs" id="drop-button-age">
+                                <span id="selected-option"></span>
+                            </button>
+                            <div class="dropdown-menu" id="dropdown-menu-age">
+                                <label onclick="Select_Option('0+')"><input type="radio" value="0+"> 0+</label>
+                                <label onclick="Select_Option('6+')"><input type="radio" value="6+"> 6+</label>
+                                <label onclick="Select_Option('12+')"><input type="radio" value="12+"> 12+</label>
+                                <label onclick="Select_Option('14+')"><input type="radio" value="14+"> 14+</label>
+                                <label onclick="Select_Option('16+')"><input type="radio" value="16+"> 16+</label>
+                                <label onclick="Select_Option('18+')"><input type="radio" value="18+"> 18+</label>
+                            </div>
+                        </div>
+                        <input type="hidden" id="selected-age" name="age">
+                    </div>
+                    <div class="form-input-group">
+                        <label for="release_date">Дата поступления в продажу:</label>
+                        <input type="date" id="release_date" name="release_date" class="form-input" required>
+                    </div>
+                </div>
+    
+                <div class="form-row">
+                    <div class="form-input-group">
+                            <label for="weight">Вес книги (грамм):</label>
+                            <input type="number" id="weight" name="weight" min="0.01" step="0.01" class="form-input" required>
+                    </div>
+                    <div class="form-input-group">
+                        <label for="price">Стоимость:</label>
+                        <input type="number" id="price" name="price" min="0.01" step="0.01" class="form-input" required>
+                    </div>
+                </div>
+    
+                <div class="form-input-group">
+                    <label for="summary">Описание:</label>
+                    <textarea id="summary" name="summary" class="form-input"></textarea>
+                </div>
+    
+                <div class="form-buttons">
+                    <button type="reset" class="btn btn-reset">Очистить</button>
+                    <button type="submit" class="btn btn-secondary">Сохранить</button>
+                </div>
+            </form>
+
+            <div id="message" class="message-box hidden">
+                <button class="message-close" onclick="closeMessage()">✖</button>
+                <div id="message-content"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/assets/js/ajax.js"></script>
+    <script src="/assets/js/modal.js"></script>
+    <script src="/assets/js/dropdown.js"></script>
+    <script src="/assets/js/validation.js"></script>
+</body>
+</html>
