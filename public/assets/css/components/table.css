@@ -1,0 +1,67 @@
+.table-wrapper {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    background: var(--color-surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    border-spacing: 0;
+}
+
+thead {
+    background-color: var(--color-accent);
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+}
+
+thead th {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid var(--color-border);
+    font-size: 16px;
+}
+
+tbody td {
+    padding: 12px;
+    border: 1px solid var(--color-border);
+    font-size: 14px;
+}
+
+.btn-edit,
+.btn-delete {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    background: transparent;
+    transition: border 0.2s ease;
+    padding: 0;
+}
+
+.btn-edit:hover {
+    border: 1px solid var(--color-accent);
+}
+
+.btn-delete:hover {
+    border: 1px solid var(--color-error);
+}
+
+td button.btn-edit,
+td button.btn-delete {
+    margin: 0 auto;
+}
+
+td:last-child,
+td:nth-last-child(2) {
+    text-align: center;
+    vertical-align: middle;
+}

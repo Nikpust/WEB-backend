@@ -1,0 +1,24 @@
+:root {
+    --color-bg:             #f0f4f8;
+    --color-surface:        #ffffff;
+    --color-accent:         #4a90e2;
+    --color-accent-hover:   #3a78c2;
+    --color-error:          #e05656;
+    --color-error-hover:    #c74444;
+    --color-text:           #1f2d3d;
+    --color-muted:          #6b7c93;
+    --color-border:         #dce6f2;
+    --color-highlight:      #eaf2fb;
+    --color-scrollbar-thumb:#c3d1e6;
+    --color-scrollbar-thumb-hover:  var(--color-accent);
+
+    --font-main: 'Segoe UI', sans-serif;
+    --font-size-base: 16px;
+
+    --radius: 10px;
+    
+    --shadow:       0 4px 15px rgba(0, 0, 0, 0.04);
+    --shadow-hover: 0 4px 25px rgba(0, 0, 0, 0.08);
+    --focus-shadow: 0 0 5px rgba(74, 144, 226, 0.7);
+    --error-shadow: 0 0 5px rgba(224, 86, 86, 0.7);
+}
