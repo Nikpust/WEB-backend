@@ -1,2 +1,2 @@
-app/logs/db.log
-.env
+/.env
+/vendor/
