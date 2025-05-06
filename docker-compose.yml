@@ -19,6 +19,7 @@ services:
       - ./vendor:/var/www/html/vendor
       - ./composer.json:/var/www/html/composer.json
       - ./composer.lock:/var/www/html/composer.lock
+      - ./tmp:/tmp/mpdf
     working_dir: /var/www/html
     depends_on:
       - db
