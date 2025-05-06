@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header class="header">
+        <div class="container header__container">
+            <div class="logo">
+                <img src="/assets/images/logo-bookstore.svg" alt="BookStore Logo">
+                <span>BookStore</span>
+            </div>
+    
+            <nav class="nav">
+                <a href="/" class="nav__link">Главная</a>
+                <a href="/books" class="nav__link">Книги</a>
+                <a href="#about" class="nav__link">О нас</a>
+            </nav>
+    
+            {% if session.user_id %}
+            <div class="dropdown">
+                <button class="dropdown-user" id="drop-button">
+                    <img src="/assets/images/icon-user.svg" alt="User Icon">
+                </button>
+                <div class="dropdown-menu" id="dropdown-menu">
+                    <a href="/profile" class="dropdown-link">Профиль</a>
+                    <a href="/logout" class="dropdown-link">Выйти</a>
+                </div>
+            </div>
+            {% else %}
+            <div class="auth">
+                <a href="/login" class="btn btn-secondary">Войти</a>
+                <a href="/register" class="btn btn-primary">Регистрация</a>
+            </div>
+            {% endif %}
+        </div>
+    </header>
+</body>
+</html>

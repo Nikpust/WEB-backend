@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>BookStore — Коллекция книг</title>
+
+    <link rel="stylesheet" href="/assets/css/root/variables.css">
+    <link rel="stylesheet" href="/assets/css/root/common.css">
+
+    <link rel="stylesheet" href="/assets/css/components/buttons.css">
+    <link rel="stylesheet" href="/assets/css/components/dropdown.css">
+    <link rel="stylesheet" href="/assets/css/components/header.css">
+    <link rel="stylesheet" href="/assets/css/components/scrollbar.css">
+
+    <link rel="stylesheet" href="/assets/css/pages/catalog.css">
+</head>
+<body>
+    {% include 'partials/header.twig' %}
+
+    <div class="container">
+        <h1 class="page-title">Коллекция книг</h1>
+
+        <div class="catalog-grid">
+            {% for book in books %}
+            <div class="card-book">
+                <div class="card-image">
+                    <img src="/assets/images/book-cover.svg" alt="Обложка книги">
+                    <div class="card-info">
+                        <h2 class="card-title">{{ book.book_name }}</h2>
+                        <p class="card-author">{{ book.book_author }}</p>
+                    </div>
+                </div>
+                <div class="card-actions">
+                    <button class="btn btn-secondary btn-more" data-id="{{ book.book_id }}">Подробнее</button>
+                    <button class="btn-favorite" data-id="{{ book.book_id }}">♡</button>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <script src="/assets/js/catalog.js"></script>
+    <script src="/assets/js/dropdown.js"></script>
+</body>
+</html>

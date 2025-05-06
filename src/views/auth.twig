@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookStore — Авторизация</title>
+
+    <link rel="stylesheet" href="/assets/css/root/variables.css">
+    <link rel="stylesheet" href="/assets/css/root/common.css">
+
+    <link rel="stylesheet" href="/assets/css/components/buttons.css">
+    <link rel="stylesheet" href="/assets/css/components/notification.css">
+    
+    <link rel="stylesheet" href="/assets/css/pages/auth.css">
+</head>
+<body>
+    <div class="auth-container{% if mode == 'sign-up' %} right-panel-active {% endif %}" id="auth-container">
+
+        <div class="form-container sign-up-container">
+            <form id="register-form" method="POST">
+                <h1>Создать аккаунт</h1>
+
+                <input type="text" name="name" placeholder="ФИО" required>
+                <input type="date" name="birthdate" placeholder="Дата рождения" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="password" name="password" placeholder="Пароль" required>
+
+                <label>
+                    <input id="is-admin" type="checkbox" name="is_admin">
+                    Администратор
+                </label>
+
+                <div id="admin-key-wrapper" class="admin-key-wrapper">
+                    <input type="text" name="admin_key" placeholder="Секретный ключ">
+                </div>
+
+                <button class="btn btn-primary" type="submit">Зарегистрироваться</button>
+
+                <div id="register-message" class="message-box hidden">
+                    <button type="button" class="message-close" data-close="register">✖</button>
+                    <div id="register-message-content"></div>
+                </div>
+            </form>
+        </div>
+
+        <div class="form-container sign-in-container">
+            <form id="login-form" method="POST">
+                <h1>Войти</h1>
+
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="password" name="password" placeholder="Пароль" required>
+
+                <button class="btn btn-primary" type="submit">Войти</button>
+
+                <div id="login-message" class="message-box hidden">
+                    <button type="button" class="message-close" data-close="login">✖</button>
+                    <div id="login-message-content"></div>
+                </div>
+            </form>
+        </div>
+
+        <div class="overlay-container">
+            <a href="/" class="logo-auth">
+                <img src="/assets/images/logo-bookstore.svg" alt="BookStore Logo">
+                <span>BookStore</span>
+            </a>
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>С возвращением!</h1>
+                    <p>Для доступа к аккаунту войдите в систему</p>
+                    <button id="to-signin" type="button" class="btn ghost">Войти</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>Привет, друг!</h1>
+                    <p>Впервые здесь? Создайте аккаунт и присоединяйтесь!</p>
+                    <button id="to-signup" type="button" class="btn ghost">Регистрация</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/assets/js/auth.js"></script>
+</body>
+</html>
