@@ -27,3 +27,28 @@ CREATE TABLE IF NOT EXISTS book_genre (
     FOREIGN KEY (book_id) REFERENCES books(book_id) ON DELETE CASCADE,
     FOREIGN KEY (genre_id) REFERENCES genres(genre_id) ON DELETE CASCADE
 );
+
+CREATE TABLE IF NOT EXISTS users (
+    user_id             SERIAL              PRIMARY KEY,
+    user_fullname       VARCHAR(150)        NOT NULL,
+    user_email          VARCHAR(255)        NOT NULL UNIQUE,
+    user_password       VARCHAR(255)        NOT NULL,
+    user_role           VARCHAR(10)         NOT NULL,
+    user_created_at     TIMESTAMP           NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS cart (
+    user_id     INT     NOT NULL,
+    book_id     INT     NOT NULL,
+    PRIMARY KEY (user_id, book_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (book_id) REFERENCES books(book_id) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS favorites (
+    user_id     INT     NOT NULL,
+    book_id     INT     NOT NULL,
+    PRIMARY KEY (user_id, book_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (book_id) REFERENCES books(book_id) ON DELETE CASCADE
+);
