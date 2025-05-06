@@ -4,6 +4,8 @@
 
     use App\controllers\HomeController;
     use App\controllers\BookController;
+    use App\controllers\UserController;
+    use App\controllers\ReportController;
 
     class Router {
         public static function handle(string $uri): void {
@@ -57,7 +59,46 @@
                         $controller->update();
                     }
                     break;
-                    
+
+                case '/login':
+                    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+                        $controller = new UserController();
+                        $controller->index('sign-in');
+                    } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                        $controller = new UserController();
+                        $controller->login();
+                    }
+                    break;
+
+                case '/register':
+                    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+                        $controller = new UserController();
+                        $controller->index('sign-up');
+                    } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                        $controller = new UserController();
+                        $controller->register();
+                    }
+                    break;
+
+                case '/logout':
+                    $controller = new UserController();
+                    $controller->logout();
+                    break;
+
+                case '/report/exel':
+                    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+                        $controller = new ReportController();
+                        $controller->downloadExel();
+                    }
+                    break;
+
+                case '/report/pdf':
+                    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+                        $controller = new ReportController();
+                        $controller->downloadPdf();
+                    }
+                    break;
+                
                 default:
                     http_response_code(404);
                     echo "Страница не найдена";
