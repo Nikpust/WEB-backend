@@ -2,8 +2,8 @@ document.addEventListener("DOMContentLoaded", function() {
     const dropdownButtonGenre = document.getElementById('drop-button-genre');
     const dropdownMenuGenre = document.getElementById('dropdown-menu-genre');
 
-    const dropdownButtonDownload = document.getElementById('drop-button-download');
-    const dropdownMenuDownload = document.getElementById('dropdown-menu-download');
+    const dropdownButtonDownload = document.getElementById('drop-button');
+    const dropdownMenuDownload = document.getElementById('dropdown-menu');
 
     dropdownButtonDownload.addEventListener('click', function (e) {
         e.preventDefault();

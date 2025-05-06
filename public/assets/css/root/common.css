@@ -5,6 +5,10 @@
     font-family: var(--font-main);
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: var(--font-main);
     font-size: var(--font-size-base);

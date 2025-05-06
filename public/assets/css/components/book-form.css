@@ -91,3 +91,7 @@ textarea.form-input {
 input[type="number"]::-webkit-inner-spin-button {
     -webkit-appearance: none;
 }
+
+.message-box {
+    margin-top: 20px;
+}
