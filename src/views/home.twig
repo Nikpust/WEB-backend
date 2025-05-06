@@ -9,29 +9,13 @@
     <link rel="stylesheet" href="/assets/css/root/common.css">
 
     <link rel="stylesheet" href="/assets/css/components/buttons.css">
+    <link rel="stylesheet" href="/assets/css/components/dropdown.css">
+    <link rel="stylesheet" href="/assets/css/components/header.css">
 
     <link rel="stylesheet" href="/assets/css/pages/home.css">
 </head>
 <body>
-    <header class="header">
-        <div class="container header__container">
-            <div class="logo">
-                <img src="/assets/images/logo-bookstore.svg" alt="BookStore Logo">
-                <span>BookStore</span>
-            </div>
-
-            <nav class="nav">
-                <a href="/" class="nav__link">Главная</a>
-                <a href="/books" class="nav__link">Книги</a>
-                <a href="/about" class="nav__link">О нас</a>
-            </nav>
-
-            <div class="auth">
-                <a href="/login" class="btn btn-secondary">Войти</a>
-                <a href="/register" class="btn btn-primary">Регистрация</a>
-            </div>
-        </div>
-    </header>
+    {% include 'partials/header.twig' %}
 
     <main class="main">
         <div class="container hero">
@@ -57,5 +41,15 @@
             </div>
         </div>
     </main>
+
+    <footer class="footer" id="about">
+        <div class="container footer__container">
+            <div class="footer__info">
+                <p>© {{ "now"|date("Y") }} BookStore. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/assets/js/dropdown.js"></script>
 </body>
 </html>
