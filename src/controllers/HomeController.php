@@ -2,16 +2,9 @@
 
     namespace App\controllers;
 
-    use Twig\Environment;
-    use Twig\Loader\FilesystemLoader;
+    use App\core\BaseController;
 
-    class HomeController {
-        private Environment $twig;
-
-        public function __construct() {
-            $loader = new FilesystemLoader(__DIR__ . '/../views');  # Создает загрузчик шаблонов Twig, указывая путь к папке views
-            $this->twig = new Environment($loader);                 # Создает объект Twig для рендеринга шаблонов
-        }
+    class HomeController extends BaseController {
         
         public function index(): void {            
             echo $this->twig->render('home.twig');

@@ -2,26 +2,24 @@
 
     namespace App\controllers;
 
-    use Twig\Environment;
-    use Twig\Loader\FilesystemLoader;
-
     use App\models\Book;
     use App\core\Patterns;
     use App\core\Validation;
+    use App\core\BaseController;
 
-    class BookController {
-        private Environment $twig;
-
-        public function __construct() {
-            $loader = new FilesystemLoader(__DIR__ . '/../views');
-            $this->twig = new Environment($loader);
-        }
+    class BookController extends BaseController {
 
         public function index(): void {
             $model = new Book();
             $books = $model->getAll();
     
-            echo $this->twig->render('books.twig', ['books' => $books]);
+            $role = $_SESSION['user_role'] ?? null;
+
+            if ($role === 'admin') {
+                echo $this->twig->render('books.twig', ['books' => $books]);
+            } else {
+                echo $this->twig->render('catalog.twig', ['books' => $books]);
+            }
         }
 
         public function save(): void {
